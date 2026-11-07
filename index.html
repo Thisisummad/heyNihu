@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen NiHu ❤</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Hind Siliguri for beautiful Bengali typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #780206 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(135, 31, 74, 0.37);
+        }
+
+        /* Floating Hearts Animation Background */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-particle {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            animation: floatUp 12s linear infinite;
+            bottom: -150px;
+            clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1200px) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Pulse animation for buttons */
+        .pulse-btn {
+            box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+            }
+            100% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 relative text-white">
+
+    <!-- Floating Background Hearts -->
+    <ul class="heart-bg" id="heartContainer"></ul>
+
+    <!-- Main Container Card -->
+    <div class="glass-card rounded-3xl p-6 sm:p-10 w-full max-w-lg relative z-10 my-auto text-center transition-all duration-500 ease-in-out">
+        
+        <!-- STEP 1: LOGIN PAGE -->
+        <div id="step-1" class="step-container space-y-6">
+            <div class="inline-block p-4 bg-white/20 rounded-full animate-bounce">
+                <i class="fa-solid fa-heart-lock text-4xl text-rose-200"></i>
+            </div>
+            <h1 class="text-3xl font-bold tracking-wide">সিক্রেট লাভ লগইন</h1>
+            <p class="text-sm text-pink-100">আপনার ব্যক্তিগত উন্মাদের রাজ্যে প্রবেশ করতে আইডি ও পাসওয়ার্ড দিন 🌸</p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">User Name:</label>
+                    <input type="text" id="username" placeholder="এখানে আইডি লিখুন..." required 
+                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 focus:outline-none focus:ring-2 focus:ring-pink-300 text-white placeholder-pink-200">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">Password:</label>
+                    <input type="password" id="password" placeholder="এখানে পাসওয়ার্ড লিখুন..." required 
+                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 focus:outline-none focus:ring-2 focus:ring-pink-300 text-white placeholder-pink-200">
+                </div>
+                <button type="submit" 
+                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:from-pink-600 hover:to-rose-700 transition duration-300 transform active:scale-95">
+                    প্রবেশ করুন <i class="fa-solid fa-arrow-right-to-bracket ml-2"></i>
+                </button>
+            </form>
+
+            <div id="loginError" class="hidden bg-red-500/40 border border-red-300/50 rounded-xl p-3 text-sm text-rose-100 animate-pulse">
+                <!-- Error text injected here -->
+            </div>
+
+            <!-- Hint Section -->
+            <div class="pt-4 border-t border-white/20 text-xs text-pink-200">
+                <p class="font-medium bg-white/10 py-2 px-3 rounded-lg inline-block border border-white/10">
+                    💡 হিন্ট (লগইন তথ্য): <span class="font-bold underline text-white">আইডি: NiHu</span> | <span class="font-bold underline text-white">পাসওয়ার্ড: Ummad</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- STEP 2: WELCOME INTRO -->
+        <div id="step-2" class="step-container hidden space-y-6">
+            <div class="text-6xl animate-pulse">✨💖✨</div>
+            <h2 class="text-2xl font-bold leading-relaxed text-pink-100">
+                "হ্যালো প্রিয় মানুষ, প্রিয় বন্ধু আমার । চলো তোমার উন্মাদের সাথে একটু অন্য জগতে ।"
+            </h2>
+            <div class="pt-4">
+                <button onclick="goToStep(3)" 
+                        class="pulse-btn px-8 py-4 bg-gradient-to-r from-amber-400 to-pink-500 rounded-full font-bold text-xl shadow-xl hover:from-amber-500 hover:to-pink-600 transition transform hover:scale-105 active:scale-95">
+                    Lets Go Baybehh... 🚀❤
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 3-9: QUESTIONS (DUSTU & PONGTA) -->
+        <div id="question-box" class="step-container hidden space-y-6">
+            <!-- Question Counter -->
+            <div class="flex justify-between items-center text-xs font-semibold text-pink-200 border-b border-white/20 pb-3">
+                <span id="question-number">ধাপ ১ / ৭</span>
+                <span><i class="fa-solid fa-sparkles mr-1"></i>দুস্টু-পোংটা কুইজ</span>
+            </div>
+
+            <!-- Question Title -->
+            <h3 id="question-text" class="text-xl sm:text-2xl font-bold text-white leading-relaxed min-h-[60px] flex items-center justify-center">
+                <!-- Dynamic Question -->
+            </h3>
+
+            <!-- Options Container -->
+            <div id="options-container" class="space-y-4 pt-2">
+                <!-- Dynamic Options -->
+            </div>
+        </div>
+
+        <!-- SPECIAL NOTICE STEP (BEFORE FINAL PAGE) -->
+        <div id="step-notice" class="step-container hidden space-y-6 text-left">
+            <div class="text-center">
+                <div class="inline-block p-4 bg-amber-500/20 rounded-full mb-2 animate-pulse">
+                    <i class="fa-solid fa-cloud-moon text-4xl text-amber-200"></i>
+                </div>
+                <h3 class="text-xl font-bold text-amber-200 border-b border-white/20 pb-2 text-center">একটি অসমাপ্ত স্বপ্ন... ✨</h3>
+            </div>
+
+            <div class="bg-black/30 p-5 rounded-2xl border border-amber-300/30 text-pink-100 text-sm sm:text-base leading-relaxed italic">
+                "তুমি একদিন এসে বলবে, আমি এসেছি । সবসময়ের জন্য আপনার হয়ে এসেছি । চলেন আমার জন্য বাঁচেন,আমার জন্য কাজ করেন,আমার জন্য নিজেকে ঠিক করেন,দেখেন আমি এসেছি আপনার হয়ে আপনার সপ্ন আমি পূরন করেছি, আমার সপ্ন পূরণ করার দায়িত্ব আমি আপনার কাছে দিলাম । আপনি আমার সপ্ন পূরণ করেন ।- এই সপ্নটাই আমাকে ঘুমাতে দেয় না ।"
+            </div>
+
+            <div class="text-center pt-3">
+                <button onclick="goToStep(99)" 
+                        class="pulse-btn w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:from-pink-600 hover:to-rose-700 transition transform active:scale-95 text-white">
+                    হ্যাঁ ফিরবো, চলো শেষ করি ❤
+                </button>
+            </div>
+        </div>
+
+        <!-- FINAL STEP: HEARTFELT CLOSING PAGE -->
+        <div id="step-final" class="step-container hidden space-y-6 text-left">
+            <div class="text-center">
+                <div class="inline-block p-4 bg-rose-500/30 rounded-full mb-2 animate-bounce">
+                    <i class="fa-solid fa-heart-pulse text-5xl text-rose-300"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white border-b border-white/20 pb-3">প্রিয় নিহু... ❤</h2>
+            </div>
+
+            <!-- Scrollable Heartfelt Letter -->
+            <div class="bg-black/20 p-5 rounded-2xl border border-white/20 text-pink-50 leading-relaxed text-base space-y-4 max-h-[380px] overflow-y-auto">
+                <p class="font-semibold text-rose-200">
+                    ধন্যবাদ নিহু ❤ ধন্যবাদ মনের বিরুদ্ধে মিথ্যা উত্তর দিয়ে দিয়ে এতদূর আসার জন্য ।
+                </p>
+                <p>
+                    ভালোবাসি ❤ আমি জানি তুমি আমার ভুলের জন্য এখন আমার থেকে দূরে থাকো । আমাকে একদিন ক্ষমা করে দিয়ো ? যতই দেরি হোক ফিরে এসো তোমার ঘরে । আমি অপেক্ষা করবো...
+                </p>
+                <p>
+                    তুমি বলেছিলে আমাদের এই পথে এমন সময় আসবে যখন মনে হবে সব শেষ,তখনও আপনার অপেক্ষা করতে হবে । আমি সব সামলিয়ে আপনার কাছে ফিরবো ।
+                </p>
+                <p>
+                    আমি সেই ফেরার অপেক্ষায় । সেদিন আমার থেকে খুসি এই পৃথিবীর কেউ হবে না । আমার দুনিয়াবি চাওয়ার অবসান হবে সেইদিন । আমি অপেক্ষমান...
+                </p>
+                <p class="font-semibold text-rose-300 text-lg pt-2 border-t border-white/10">
+                    ভালোবাসি আমার পাখি, আমার পৃথিবী, আমার মহারানী, আমার শেষ নারী শেষ চাওয়া, আমার একান্তমানবী, আমার নিহু❤🌸
+                </p>
+            </div>
+
+            <div class="text-center pt-2">
+                <button onclick="playChimes(); createHeartShower();" 
+                        class="px-6 py-2.5 bg-white/20 hover:bg-white/30 border border-white/40 rounded-full text-xs font-bold transition">
+                    <i class="fa-solid fa-sparkles text-amber-300 mr-1"></i> আবার ভালোবাসার বৃষ্টি পাঠাও 💖
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AUDIO SYNTHESIZER FOR ROMANTIC SOUNDS (Web Audio API) -->
+    <script>
+        // Web Audio API for cute interaction sounds
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(freq = 440, type = 'sine', duration = 0.2) {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {
+                console.log("Audio not supported or blocked.");
+            }
+        }
+
+        function playSuccessSound() {
+            playSound(523.25, 'sine', 0.15); // C5
+            setTimeout(() => playSound(659.25, 'sine', 0.15), 100); // E5
+            setTimeout(() => playSound(783.99, 'sine', 0.3), 200); // G5
+        }
+
+        function playChimes() {
+            const notes = [523.25, 659.25, 783.99, 1046.50, 880.00];
+            notes.forEach((freq, i) => {
+                setTimeout(() => playSound(freq, 'triangle', 0.4), i * 150);
+            });
+        }
+
+        function playClickSound() {
+            playSound(300, 'sine', 0.08);
+        }
+
+        // Generate Floating Background Hearts
+        const heartContainer = document.getElementById('heartContainer');
+        for (let i = 0; i < 20; i++) {
+            const li = document.createElement('li');
+            li.classList.add('heart-particle');
+            li.style.left = `${Math.random() * 100}%`;
+            li.style.animationDelay = `${Math.random() * 8}s`;
+            li.style.animationDuration = `${8 + Math.random() * 8}s`;
+            const size = 15 + Math.random() * 20;
+            li.style.width = `${size}px`;
+            li.style.height = `${size}px`;
+            heartContainer.appendChild(li);
+        }
+
+        // STEP MANAGEMENT
+        function goToStep(stepNum) {
+            playClickSound();
+            document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
+            
+            if (stepNum === 1) {
+                document.getElementById('step-1').classList.remove('hidden');
+            } else if (stepNum === 2) {
+                document.getElementById('step-2').classList.remove('hidden');
+            } else if (stepNum >= 3 && stepNum < 3 + questions.length) {
+                document.getElementById('question-box').classList.remove('hidden');
+                loadQuestion(stepNum - 3);
+            } else if (stepNum === 3 + questions.length) {
+                document.getElementById('step-notice').classList.remove('hidden');
+            } else {
+                document.getElementById('step-final').classList.remove('hidden');
+                playChimes();
+                createHeartShower();
+            }
+        }
+
+        // LOGIN HANDLER
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('loginError');
+
+            if (user === 'NiHu' && pass === 'Ummad') {
+                errorDiv.classList.add('hidden');
+                playSuccessSound();
+                goToStep(2);
+            } else {
+                playSound(200, 'sawtooth', 0.3);
+                errorDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> আরে ম্যাডাম, সঠিক পাসওয়ার্ড ও আইডি দেন! (নিচেই তো লেখা আছে 😜)`;
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // QUESTIONS DATA (UPDATED BASED ON USER REQUEST)
+        const questions = [
+            {
+                q: "১. তুমি কি আমাকে ভালোবাসো ?",
+                o1: "হ্যাঁ অবশ্যই",
+                o2: "আবার জিগায়"
+            },
+            {
+                q: "২. তুমি কি আমাকে মিস করো ? কাছে পেতে চাও ? জরিয়ে ধরে কাদবে ? বলবে যা কাউকে বলতে পারছো না । আমাকে তোমার সব থেকে আপন বন্ধু বানাবে ?",
+                o1: "হু উম্মাদ আমার",
+                o2: "হ্যাঁ পাগলা আমার"
+            },
+            {
+                q: "৩. ঘুরতে যেতে চাও কোথায় ?",
+                o1: "তোমার বুকে",
+                o2: "তোমার মনে"
+            },
+            {
+                q: "৪. ভুল কে বেশি করে আর পরে ক্ষমা চেয়ে পটায় কে?",
+                o1: "আমার সেই উন্মান্দ ছেলেটা 🤦‍♂️",
+                o2: "তুমি ছাড়া আর কে! 💕"
+            },
+            {
+                q: "৫. আমাদের পুরনো দিনগুলি কি তোমার মনে পরে ?",
+                o1: "হ্যাঁ অনেক",
+                o2: "আমি ঐ দিনগুলি ভুলতে পারবো না"
+            },
+            {
+                q: "৬. আচ্ছাহ, বলে ফেলো আমরা বাচ্চা কয়টা নিবো ?",
+                o1: "৫টা",
+                o2: "২০ টা"
+            },
+            {
+                q: "৭. আমাদের এই দূরত্ব আর কতদিন ?",
+                o1: "এই পেইজটা শেষ হওয়া পর্যন্ত ⏱",
+                o2: "আপনি ফুসকা খাওয়ালে এখনই শেষ!"
+            }
+        ];
+
+        let currentQIndex = 0;
+
+        function loadQuestion(index) {
+            currentQIndex = index;
+            const q = questions[index];
+            
+            document.getElementById('question-number').innerText = `ধাপ ${index + 1} / ${questions.length}`;
+            document.getElementById('question-text').innerText = q.q;
+
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = `
+                <button onclick="answerQuestion()" 
+                        class="w-full py-3.5 px-4 bg-white/20 hover:bg-pink-500/40 border border-white/40 rounded-2xl font-semibold text-lg transition duration-300 transform active:scale-95 flex items-center justify-center space-x-2">
+                    <span>${q.o1}</span>
+                </button>
+                <button onclick="answerQuestion()" 
+                        class="w-full py-3.5 px-4 bg-white/20 hover:bg-pink-500/40 border border-white/40 rounded-2xl font-semibold text-lg transition duration-300 transform active:scale-95 flex items-center justify-center space-x-2">
+                    <span>${q.o2}</span>
+                </button>
+            `;
+        }
+
+        function answerQuestion() {
+            playSuccessSound();
+            showCuteToast();
+            if (currentQIndex + 1 < questions.length) {
+                goToStep(3 + currentQIndex + 1);
+            } else {
+                goToStep(3 + questions.length); // Go to Special Notice Step
+            }
+        }
+
+        // CUTE TOAST REACTION
+        const funnyReactions = [
+            "উফ! জানি তো এটাই বলবে! 😜",
+            "হাহা! ধরা খেয়ে গেলে তো! 💖",
+            "এত ভালোবাসা কোথায় রাখি! 🙈",
+            "মিথ্যা উত্তর হলেও শুনতে দারুণ লাগছে! 😘",
+            "ইসস! আমার কিউট বউটা! 🌸",
+            "একদম ঠিক কথা! ❤"
+        ];
+
+        function showCuteToast() {
+            const toast = document.createElement('div');
+            const randomMsg = funnyReactions[Math.floor(Math.random() * funnyReactions.length)];
+            toast.className = 'fixed top-10 left-1/2 transform -translate-x-1/2 bg-rose-600 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl z-50 animate-bounce border border-rose-300';
+            toast.innerHTML = `<i class="fa-solid fa-heart mr-2 text-pink-200"></i> ${randomMsg}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 1800);
+        }
+
+        // HEART SHOWER EFFECT FOR FINAL PAGE
+        function createHeartShower() {
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤';
+                    heart.className = 'fixed text-2xl z-50 pointer-events-none transition-all duration-1000';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.top = `-20px`;
+                    heart.style.fontSize = `${20 + Math.random() * 25}px`;
+                    heart.style.color = ['#ff4d6d', '#ff758c', '#fff', '#ffb3c1'][Math.floor(Math.random() * 4)];
+                    document.body.appendChild(heart);
+
+                    const fallDuration = 2000 + Math.random() * 2000;
+                    
+                    heart.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                        { transform: `translateY(105vh) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: fallDuration,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    });
+
+                    setTimeout(() => heart.remove(), fallDuration);
+                }, i * 80);
+            }
+        }
+    </script>
+</body>
+</html>
