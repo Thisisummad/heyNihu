@@ -154,7 +154,7 @@
 
         .handwritten-text {
             font-family: 'Atma', 'Hind Siliguri', cursive, sans-serif;
-            color: #1a237e; /* Vintage blue ink color */
+            color: #1a237e;
             text-shadow: 0.5px 0.5px 1px rgba(0, 0, 50, 0.15);
             letter-spacing: 0.5px;
             word-spacing: 2px;
@@ -222,7 +222,8 @@
         <div id="step-2" class="step-container hidden space-y-6">
             <div class="flex justify-center mb-2">
                 <div class="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-pink-400 via-rose-500 to-amber-300 shadow-xl animate-pulse">
-                    <img src="fdb116b0-8e02-4854-9257-aac8e95d002f.jfif" alt="NiHu" class="w-full h-full object-cover rounded-full border-4 border-white/80" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300'">
+                    <!-- Correct NiHu Photo inserted here -->
+                    <img src="nihu_photo.jpg" alt="NiHu" class="w-full h-full object-cover rounded-full border-4 border-white/80" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300'">
                 </div>
             </div>
             <h2 class="text-2xl font-bold leading-relaxed text-pink-100">
@@ -473,7 +474,6 @@
 
     <!-- AUDIO & INTERACTIVE LOGIC -->
     <script>
-        // Web Audio API Synthesizer for ambient music & effects
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         function playTone(freq, duration, type = 'sine', vol = 0.05) {
@@ -532,7 +532,6 @@
             }
         }
 
-        // Short Letter Modal Controls
         function openShortLetterModal() {
             playTone(400, 0.1);
             document.getElementById('shortLetterModal').classList.remove('hidden');
@@ -542,7 +541,6 @@
             document.getElementById('shortLetterModal').classList.add('hidden');
         }
 
-        // Generate Floating Background Hearts
         const heartContainer = document.getElementById('heartContainer');
         for (let i = 0; i < 22; i++) {
             const li = document.createElement('li');
@@ -556,7 +554,6 @@
             heartContainer.appendChild(li);
         }
 
-        // STEP NAVIGATION LOGIC
         function goToStep(stepNum) {
             playTone(300, 0.08);
             document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
@@ -586,7 +583,6 @@
             }
         }
 
-        // LOGIN HANDLER
         function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('username').value.trim();
@@ -605,7 +601,6 @@
             }
         }
 
-        // MOOD METER LOGIC
         function setMood(mood) {
             playSuccessSound();
             if (mood === 'angry') {
@@ -618,7 +613,6 @@
             goToStep(4);
         }
 
-        // QUESTIONS DATA
         const questions = [
             {
                 q: "১. তুমি কি আমাকে ভালোবাসো ?",
@@ -713,7 +707,6 @@
             }
         }
 
-        // Dodging Button Effect
         function dodgeButton() {
             const btn = document.getElementById('dodgeBtn');
             const randomX = (Math.random() - 0.5) * 220;
@@ -722,7 +715,6 @@
             playTone(600, 0.05, 'square', 0.05);
         }
 
-        // Confetti Particle Explosion
         function triggerConfetti() {
             if (typeof confetti === 'function') {
                 confetti({
@@ -733,7 +725,6 @@
             }
         }
 
-        // Cute Reaction Toast Message
         const funnyReactions = [
             "উফ! জানি তো এটাই বলবে! 😜",
             "হাহা! ধরা খেয়ে গেলে তো! 💖",
@@ -753,7 +744,6 @@
             setTimeout(() => { toast.remove(); }, 1600);
         }
 
-        // TYPEWRITER LETTER LOGIC
         const fullLetterText = `ধন্যবাদ নিহু ❤ ধন্যবাদ মনের বিরুদ্ধে মিথ্যা উত্তর দিয়ে দিয়ে এতদূর আসার জন্য । 
 
 ভালোবাসি ❤ আমি জানি তুমি আমার ভুলের জন্য এখন আমার থেকে দূরে থাকো । আমাকে একদিন ক্ষমা করে দিয়ো ? যতই দেরি হোক ফিরে এসো তোমার ঘরে । আমি অপেক্ষা করবো...
@@ -775,65 +765,4 @@
                     const char = fullLetterText.charAt(typeIdx);
                     if (char === '\n') {
                         target.innerHTML += '<br>';
-                    } else if (char === ' ') {
-                        target.innerHTML += '&nbsp;';
-                    } else {
-                        target.innerHTML += char;
-                    }
-                    typeIdx++;
-                    target.parentElement.scrollTop = target.parentElement.scrollHeight;
-                    setTimeout(typeNextChar, 40);
-                }
-            }
-            typeNextChar();
-        }
-
-        // 10 REASONS WHY I LOVE YOU POP-UP
-        const loveReasons = [
-            "১. তোমার ওই রাগি কিন্তু কিউট মুখটার জন্য! 🌸",
-            "২. তুমি আমাকে পৃথিবীর সবচেয়ে বিশেষ মানুষ অনুভব করাও। ❤️",
-            "৩. তোমার হাসি দেখলে আমার সব দুঃখ দূর হয়ে যায়। 😊",
-            "৪. তুমি আমার জীবনের সবচেয়ে বড় উপহার। ✨",
-            "৫. তোমার মতো যত্ন আর কেউ নিতে পারে না। 🫂",
-            "৬. তুমি আমার সেরা বন্ধু ও একমাত্র রাজরানী। 👑",
-            "৭. তোমার কথা শুনলে মন ভালো হয়ে যায়। 🎶",
-            "৮. তোমার সাথে কাটানো প্রতিটা মুহূর্ত স্মরণীয়। ⏳",
-            "৯. তুমি আমার শেষ চাওয়া এবং শেষ নারী। 💕",
-            "১০. কারণ আমি তো তোমাকেই ভালোবাসি, উউউউউউউউউউউম্মাদ নিহুর জন্যই বাঁচে! ❤️"
-        ];
-        let reasonIdx = 0;
-        function showLoveReason() {
-            playTone(600, 0.1);
-            alert(loveReasons[reasonIdx]);
-            reasonIdx = (reasonIdx + 1) % loveReasons.length;
-        }
-
-        function answerStoryQuiz(isCorrect) {
-            playSuccessSound();
-            triggerConfetti();
-            const qEl = document.getElementById('story-quiz-question');
-            const optEl = document.getElementById('story-quiz-options');
-            const nextBtn = document.getElementById('nextToNoticeBtn');
-            
-            if(isCorrect) {
-                qEl.innerText = "🎉 একদম সঠিক উত্তর! আমার মহারানী নিহুই আমার সব!";
-            } else {
-                qEl.innerText = "🥰 ফুচকা আর ঘুম তো পছন্দ, তবে সবার উপরে শুধু নিহুই! ❤️";
-            }
-            optEl.innerHTML = "<p class='text-xs text-pink-200 font-bold'>চলো এবার উন্মাদের শেষ সুন্দর কথাটি দেখে নেওয়া যাক...</p>";
-            nextBtn.classList.remove('hidden');
-        }
-
-        // VIRTUAL GIFT BOX UNLOCK LOGIC
-        function openGiftBox() {
-            playChimes();
-            triggerConfetti();
-            const icon = document.getElementById('giftIcon');
-            const text = document.getElementById('giftText');
-
-            icon.innerText = "🎟️";
-            text.innerHTML = "<span class='text-amber-200 text-base'>এতদূর আসার জন্য গিফট কুপন আনলকড:</span><br>১টি শক্ত করে জড়িয়ে ধরা + সারাজীবন পাশে থাকার গ্যারান্টি! ❤️";
-        }
-    </script>
-</body>
-</html>
+                    } else if (char === '
