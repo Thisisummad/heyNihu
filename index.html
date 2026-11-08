@@ -125,7 +125,8 @@
             <h1 class="text-3xl font-bold">সিক্রেট লাভ লগইন</h1>
             <p class="text-sm text-pink-100">আপনার ব্যক্তিগত উন্মাদের রাজ্যে প্রবেশ করতে আইডি ও পাসওয়ার্ড দিন 🌸</p>
 
-            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-left">
+            <!-- preventDefault যুক্ত করা ফর্ম -->
+            <form id="loginForm" onsubmit="event.preventDefault(); handleLogin();" class="space-y-4 text-left">
                 <div>
                     <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">User Name:</label>
                     <input type="text" id="username" placeholder="এখানে আইডি লিখুন (NiHu)..." required 
@@ -136,8 +137,8 @@
                     <input type="password" id="password" placeholder="এখানে পাসওয়ার্ড লিখুন (Ummad)..." required 
                            class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 text-white placeholder-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300">
                 </div>
-                <button type="submit" 
-                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:opacity-95 transition">
+                <button type="button" onclick="handleLogin()" 
+                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:opacity-95 transition cursor-pointer">
                     প্রবেশ করুন <i class="fa-solid fa-arrow-right-to-bracket ml-2"></i>
                 </button>
             </form>
@@ -434,8 +435,7 @@
             }
         }
 
-        function handleLogin(e) {
-            e.preventDefault();
+        function handleLogin() {
             const user = document.getElementById('username').value.trim();
             const pass = document.getElementById('password').value.trim();
             const errorDiv = document.getElementById('loginError');
@@ -469,7 +469,7 @@
             { q: "২. তুমি কি আমাকে মিস করো ? কাছে পেতে চাও ?", o1: "হু উম্মাদ আমার", o2: "হ্যাঁ পাগলা আমার", dodgeText: "জিব্বনেও নাহ 😤", dodge: true },
             { q: "৩. ঘুরতে যেতে চাও কোথায় ?", o1: "তোমার বুকে", o2: "তোমার মনে", dodgeText: "জাহান্নামে,জাবেন ? 😈", dodge: true },
             { q: "৪. ভুল কে বেশি করে আর পরে ক্ষমা চেয়ে পটায় কে?", o1: "আমার সেই উন্মান্দ ছেলেটা 🤦‍♂️", o2: "তুমি ছাড়া আর কে! 💕", dodgeText: "আমিও ক্ষমা চেয়ে পটাই 🤔", dodge: true },
-            { q: "৫. আমাদের পুরনো দিনগুলি কি তোমার মনে পরে ?", o1: "হ্যাঁ অনেক, ভুলতে পারবো না ।", o2: "ঐ সুন্দর দিনগুলো সব মনে আছে 💕", dodgeText: "কি যেন ? কবে ? কখন ? 🙄", dodge: true },
+            { q: "৫. আমাদের পুরনো দিনগুলি কি তোমার মনে পরে ?", o1: "হ্যাঁ অনেক, ভুলতে পারবো না ।", o2: "ঐ সুন্দর দিনগুলো সব মনে আছে 💕", dodgeText: "কি যেন ? কবে ? কখন ? কি ? 🙄", dodge: true },
             { q: "৬. আচ্ছাহ, বলে ফেলো আমরা বাচ্চা কয়টা নিবো ?", o1: "আপনি নিজেই তো বাচ্চা! 😂", o2: "২০ টা 🙈", dodgeText: "একটাও নাহ 😒", dodge: true },
             { q: "৭. আমাদের এই দূরত্ব শেষ করে ফিরবে তো ?", o1: "হুম... আরেকটু সবর⏱", o2: "ফিরবো আমি, আপনারই ।", dodgeText: "ফিরমু নাহ 🙈", dodge: true }
         ];
