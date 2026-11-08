@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- Google Fonts: Hind Siliguri for Bengali -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Atma:wght@500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -20,8 +20,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
-        /* Glassmorphic Card Container */
         .glass-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
@@ -29,334 +27,230 @@
             border: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.4);
         }
-
-        /* Floating Hearts Animation */
         .heart-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
         }
-
         .heart-particle {
-            position: absolute;
-            list-style: none;
-            display: block;
-            width: 20px;
-            height: 20px;
+            position: absolute; width: 20px; height: 20px;
             background: rgba(255, 182, 193, 0.4);
             animation: floatUp 10s linear infinite;
             bottom: -150px;
             clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
         }
-
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg) scale(0.6);
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(-1200px) rotate(360deg) scale(1.4);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 0.9; }
+            100% { transform: translateY(-1200px) rotate(360deg) scale(1.4); opacity: 0; }
         }
-
-        /* Pulse Button Animation */
         .pulse-btn {
-            box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
             0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
             70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
             100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
-
-        /* 3D Flip Card Effect */
         .flip-card {
             background-color: transparent;
             perspective: 1000px;
             height: 150px;
         }
-
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            cursor: pointer;
+            position: relative; width: 100%; height: 100%;
+            text-align: center; transition: transform 0.8s;
+            transform-style: preserve-3d; cursor: pointer;
         }
-
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 1rem;
+            display: flex; align-items: center; justify-content: center; padding: 1rem;
         }
-
         .flip-card-front {
             background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3); color: white;
         }
-
         .flip-card-back {
             background: linear-gradient(135deg, #e11d48, #9f1239);
-            color: white;
-            transform: rotateY(180deg);
+            color: white; transform: rotateY(180deg);
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.4); border-radius: 10px; }
-
-        /* Certificate Styling */
-        .certificate-border {
-            border: 8px double #fcd34d;
-            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,242,242,0.95));
-        }
-    
-        /* Aesthetic Diary Paper Background */
         .diary-paper {
             background-color: #fdf6e3;
-            background-image: 
-                linear-gradient(rgba(210, 180, 140, 0.25) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(239, 68, 68, 0.2) 1px, transparent 1px);
-            background-size: 100% 1.8rem, 100% 100%;
-            background-position: 0 0.5rem, 2rem 0;
+            background-image: linear-gradient(rgba(210, 180, 140, 0.25) 1px, transparent 1px);
+            background-size: 100% 1.8rem;
             border-left: 3px solid rgba(239, 68, 68, 0.4);
             border-radius: 12px;
-            box-shadow: inset 0 0 20px rgba(160, 120, 80, 0.15), 0 8px 25px rgba(0, 0, 0, 0.3);
             color: #2b1810;
             font-family: 'Atma', 'Hind Siliguri', cursive, sans-serif;
-            font-size: 1.15rem;
-            line-height: 1.8rem;
-            padding: 1.2rem 1.5rem 1.2rem 2.8rem;
+            font-size: 1.1rem; line-height: 1.8rem;
+            padding: 1.2rem 1.5rem 1.2rem 2.5rem;
         }
-
         .handwritten-text {
             font-family: 'Atma', 'Hind Siliguri', cursive, sans-serif;
             color: #1a237e;
-            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 50, 0.15);
-            letter-spacing: 0.5px;
-            word-spacing: 2px;
+        }
+        .certificate-border {
+            border: 8px double #fcd34d;
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(254,242,242,0.95));
         }
     </style>
 </head>
 <body class="flex items-center justify-center p-4 relative text-white min-h-screen">
 
-    <!-- Background Romantic Audio Player -->
     <audio id="bgMusic" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112184.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Background Floating Hearts -->
     <ul class="heart-bg" id="heartContainer"></ul>
 
-    <!-- Top Music Control Bar -->
+    <!-- Top Music Control -->
     <div class="fixed top-4 right-4 z-50">
         <button id="musicToggle" onclick="toggleMusic()" 
-                class="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-2 transition shadow-lg">
+                class="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/40 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-2 shadow-lg">
             <i id="musicIcon" class="fa-solid fa-music text-pink-300 animate-pulse"></i>
             <span id="musicText">গানের সুর অন করুন 🎵</span>
         </button>
     </div>
 
-    <!-- Main Card Container -->
-    <div class="glass-card rounded-3xl p-6 sm:p-10 w-full max-w-lg relative z-10 my-auto text-center transition-all duration-500 ease-in-out">
+    <!-- Main Container -->
+    <div class="glass-card rounded-3xl p-6 sm:p-10 w-full max-w-lg relative z-10 my-auto text-center">
         
-        <!-- STEP 1: LOGIN PAGE -->
+        <!-- STEP 1: LOGIN -->
         <div id="step-1" class="step-container space-y-6">
             <div class="inline-block p-4 bg-white/20 rounded-full animate-bounce">
                 <i class="fa-solid fa-heart-lock text-5xl text-rose-300"></i>
             </div>
-            <h1 class="text-3xl font-bold tracking-wide">সিক্রেট লাভ লগইন</h1>
+            <h1 class="text-3xl font-bold">সিক্রেট লাভ লগইন</h1>
             <p class="text-sm text-pink-100">আপনার ব্যক্তিগত উন্মাদের রাজ্যে প্রবেশ করতে আইডি ও পাসওয়ার্ড দিন 🌸</p>
 
             <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4 text-left">
                 <div>
                     <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">User Name:</label>
-                    <input type="text" id="username" placeholder="এখানে আইডি লিখুন..." required 
-                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 focus:outline-none focus:ring-2 focus:ring-pink-300 text-white placeholder-pink-200">
+                    <input type="text" id="username" placeholder="এখানে আইডি লিখুন (NiHu)..." required 
+                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 text-white placeholder-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">Password:</label>
-                    <input type="password" id="password" placeholder="এখানে পাসওয়ার্ড লিখুন..." required 
-                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 focus:outline-none focus:ring-2 focus:ring-pink-300 text-white placeholder-pink-200">
+                    <input type="password" id="password" placeholder="এখানে পাসওয়ার্ড লিখুন (Ummad)..." required 
+                           class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/40 text-white placeholder-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300">
                 </div>
                 <button type="submit" 
-                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:from-pink-600 hover:to-rose-700 transition duration-300 transform active:scale-95">
+                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:opacity-95 transition">
                     প্রবেশ করুন <i class="fa-solid fa-arrow-right-to-bracket ml-2"></i>
                 </button>
             </form>
 
             <div id="loginError" class="hidden bg-red-500/40 border border-red-300/50 rounded-xl p-3 text-sm text-rose-100 animate-pulse"></div>
 
-            <!-- Hint Section -->
             <div class="pt-4 border-t border-white/20 text-xs text-pink-200">
                 <p class="font-medium bg-white/10 py-2 px-3 rounded-lg inline-block border border-white/10">
-                    💡 হিন্ট (লগইন তথ্য): <span class="font-bold underline text-white">আইডি: NiHu</span> | <span class="font-bold underline text-white">পাসওয়ার্ড: Ummad</span>
+                    💡 হিন্ট: <span class="font-bold underline text-white">আইডি: NiHu</span> | <span class="font-bold underline text-white">পাসওয়ার্ড: Ummad</span>
                 </p>
             </div>
         </div>
 
-        <!-- STEP 2: WELCOME INTRO & SHORT LETTER -->
+        <!-- STEP 2: WELCOME & PHOTO -->
         <div id="step-2" class="step-container hidden space-y-6">
             <div class="flex justify-center mb-2">
                 <div class="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-pink-400 via-rose-500 to-amber-300 shadow-xl animate-pulse">
-                    <!-- Correct NiHu Photo inserted here -->
                     <img src="nihu_photo.jpg" alt="NiHu" class="w-full h-full object-cover rounded-full border-4 border-white/80" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300'">
                 </div>
             </div>
             <h2 class="text-2xl font-bold leading-relaxed text-pink-100">
                 "হ্যালো প্রিয় মানুষ, প্রিয় বন্ধু আমার । চলো তোমার উন্মাদের সাথে একটু অন্য জগতে ।"
             </h2>
-
-            <!-- Short Secret Letter Box -->
             <div class="bg-black/30 p-4 rounded-2xl border border-white/20 space-y-3">
-                <p class="text-xs text-pink-200 font-semibold flex items-center justify-center">
+                <p class="text-xs text-pink-200 font-semibold">
                     <i class="fa-solid fa-envelope-open-text text-rose-400 mr-2"></i> তোমার উন্মাদের ছোট চিঠি 💌
                 </p>
                 <button onclick="openShortLetterModal()" 
-                        class="px-5 py-2.5 bg-rose-500/40 hover:bg-rose-500/60 border border-rose-300/40 rounded-full text-xs font-bold transition flex items-center justify-center space-x-2 mx-auto">
+                        class="px-5 py-2.5 bg-rose-500/40 hover:bg-rose-500/60 border border-rose-300/40 rounded-full text-xs font-bold transition mx-auto flex items-center space-x-2">
                     <i class="fa-solid fa-heart-pulse text-pink-300"></i>
                     <span>চিঠিটি পড়ুন নিহু ম্যাডাম 🌸</span>
                 </button>
             </div>
-
             <div class="pt-2">
                 <button onclick="goToStep(3)" 
-                        class="pulse-btn px-8 py-4 bg-gradient-to-r from-amber-400 to-pink-500 rounded-full font-bold text-xl shadow-xl hover:from-amber-500 hover:to-pink-600 transition transform hover:scale-105 active:scale-95 text-white">
+                        class="pulse-btn px-8 py-4 bg-gradient-to-r from-amber-400 to-pink-500 rounded-full font-bold text-xl shadow-xl hover:opacity-95 text-white">
                     Lets Go Baybehh... 🚀❤
                 </button>
             </div>
         </div>
 
-        <!-- STEP 3: MOOD METER STEP -->
+        <!-- STEP 3: MOOD METER -->
         <div id="step-3" class="step-container hidden space-y-6">
             <div class="text-5xl">🎭</div>
             <h2 class="text-2xl font-bold text-pink-100">নিহু ম্যাডাম, আপনার বর্তমান মেজাজ কেমন?</h2>
-            <p class="text-xs text-pink-200">সত্যি করে বলুন তো আপনার উন্মাদের ওপর কতটা রাগ হয়ে আছে?</p>
-
             <div class="space-y-3 pt-2">
-                <button onclick="setMood('angry')" class="w-full py-3 px-4 bg-red-500/30 hover:bg-red-500/50 border border-red-300/40 rounded-xl font-semibold text-sm transition flex items-center justify-between">
-                    <span>😡 খুব রেগে আছি! (বিপদজনক)</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button onclick="setMood('angry')" class="w-full py-3 px-4 bg-red-500/30 hover:bg-red-500/50 border border-red-300/40 rounded-xl font-semibold text-sm transition flex justify-between items-center">
+                    <span>😡 খুব রেগে আছি! (বিপদজনক)</span><i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
-                <button onclick="setMood('slightly')" class="w-full py-3 px-4 bg-amber-500/30 hover:bg-amber-500/50 border border-amber-300/40 rounded-xl font-semibold text-sm transition flex items-center justify-between">
-                    <span>😤 একটু একটু রেগে আছি</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button onclick="setMood('slightly')" class="w-full py-3 px-4 bg-amber-500/30 hover:bg-amber-500/50 border border-amber-300/40 rounded-xl font-semibold text-sm transition flex justify-between items-center">
+                    <span>😤 একটু একটু রেগে আছি</span><i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
-                <button onclick="setMood('happy')" class="w-full py-3 px-4 bg-pink-500/30 hover:bg-pink-500/50 border border-pink-300/40 rounded-xl font-semibold text-sm transition flex items-center justify-between">
-                    <span>🥺 মন একটু ভালো আছে</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button onclick="setMood('happy')" class="w-full py-3 px-4 bg-pink-500/30 hover:bg-pink-500/50 border border-pink-300/40 rounded-xl font-semibold text-sm transition flex justify-between items-center">
+                    <span>🥺 মন একটু ভালো আছে</span><i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
             </div>
         </div>
 
-        <!-- STEP 4: PROMISES FLIP CARDS STEP -->
+        <!-- STEP 4: CARDS -->
         <div id="step-4" class="step-container hidden space-y-6">
             <div class="text-xs font-semibold text-pink-200 border-b border-white/20 pb-2">
-                🃏 আমার ভুল স্বীকার ও ওয়াদার কার্ড (কার্ডে ক্লিক করে উল্টান)
+                🃏 আমার ভুল স্বীকার ও ওয়াদার কার্ড (ক্লিক করে উল্টান)
             </div>
-
-            <!-- Card 1 -->
-            <div class="flip-card" id="card1" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
+            <div class="flip-card" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front font-bold text-lg">
-                        <span>❓ আমি কী ভুল করেছি? <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span>
-                    </div>
-                    <div class="flip-card-back text-sm leading-relaxed">
-                        আমি তোমাকে কষ্ট দিয়েছি। মানসিক ও শারীরিক দুটোই। আমি তোমাকে বুঝিনি । অনেক প্রশ্ন করেছি । জোর করেছি আমার হতে যা আমার উচিত হয়নি ।
-                    </div>
+                    <div class="flip-card-front font-bold text-lg"><span>❓ আমি কী ভুল করেছি? <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span></div>
+                    <div class="flip-card-back text-sm leading-relaxed">আমি তোমাকে কষ্ট দিয়েছি। মানসিক ও শারীরিক দুটোই। আমি তোমাকে বুঝিনি, জোর করেছি যা আমার উচিত হয়নি।</div>
                 </div>
             </div>
-
-            <!-- Card 2 -->
-            <div class="flip-card" id="card2" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
+            <div class="flip-card" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front font-bold text-lg">
-                        <span>✋ আমি ওয়াদা করছি... <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span>
-                    </div>
-                    <div class="flip-card-back text-sm leading-relaxed">
-                        আমি আপনাকে শুনবো। নাহয় মাথা নিচু করে আপনার চড় খাবো, আপনি না মারতে পারলে আমাকে বলবেন "নিজের গালে থাপ্পর মারেন ২টা" "নিজের" কথাটা উল্লেখ কইরো নাহয় বিপদ"
-                    </div>
+                    <div class="flip-card-front font-bold text-lg"><span>✋ আমি ওয়াদা করছি... <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span></div>
+                    <div class="flip-card-back text-sm leading-relaxed">আমি আপনাকে শুনবো। মাথা নিচু করে আপনার চড় খাবো। আপনার হুকুমেই সংসার চলবে।</div>
                 </div>
             </div>
-
-            <!-- Card 3 -->
-            <div class="flip-card" id="card3" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
+            <div class="flip-card" onclick="this.classList.toggle('flipped'); playTone(500, 0.1);">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front font-bold text-lg">
-                        <span>💍 ভবিষ্যতের ওয়াদা <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span>
-                    </div>
-                    <div class="flip-card-back text-xs leading-relaxed overflow-y-auto">
-                        সারাটা জীবন আপনাকে আদরে রাখবো। আপনার জুতা থেকে মাথার চুল মুছে দেয়ার দায়িত্ব নিবো। গলা উচু হবে না। আপনার সিদ্ধান্তই শিরোধার্য হবে। আপনার হুকুমেই সংসার চলবে। আমি ভুল করলে ফুসকা,চটপটি,ছোলা বা আপনার পছন্দের খাবার দিবো। আপনাতেই শেষ হয়ে ঐপারে আপনাকেই চাইবো।
-                    </div>
+                    <div class="flip-card-front font-bold text-lg"><span>💍 ভবিষ্যতের ওয়াদা <br><span class="text-xs font-normal text-pink-200">(ক্লিক করুন)</span></span></div>
+                    <div class="flip-card-back text-xs leading-relaxed overflow-y-auto">সারাটা জীবন আপনাকে আদরে রাখবো। আপনার জুতা থেকে মাথার চুল মুছে দেওয়ার দায়িত্ব নিবো। আপনাতেই শেষ হয়ে ঐপারে আপনাকেই চাইবো।</div>
                 </div>
             </div>
-
             <button onclick="goToStep(5)" class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-base shadow-lg">
                 চলো কুইজে যাই <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
         </div>
 
-        <!-- STEP 5-11: QUIZ & DODGING BUTTON -->
+        <!-- STEP 5-11: QUIZ & DODGE -->
         <div id="question-box" class="step-container hidden space-y-6 relative">
             <div class="flex justify-between items-center text-xs font-semibold text-pink-200 border-b border-white/20 pb-3">
                 <span id="question-number">ধাপ ১ / ৭</span>
                 <span><i class="fa-solid fa-sparkles mr-1"></i>ভালোবাসি তোমাকে</span>
             </div>
-
-            <h3 id="question-text" class="text-lg sm:text-xl font-bold text-white leading-relaxed min-h-[70px] flex items-center justify-center">
-                <!-- Question text inserted dynamically -->
-            </h3>
-
-            <div id="options-container" class="space-y-3 pt-2">
-                <!-- Options inserted dynamically -->
-            </div>
-
-            <!-- Playful Dodging No Button (Catch Me If You Can) -->
+            <h3 id="question-text" class="text-lg sm:text-xl font-bold text-white leading-relaxed min-h-[70px] flex items-center justify-center"></h3>
+            <div id="options-container" class="space-y-3 pt-2"></div>
             <div id="dodging-btn-container" class="hidden pt-2">
                 <button id="dodgeBtn" onmouseover="dodgeButton()" onclick="dodgeButton()" 
-                        class="px-4 py-2 bg-gray-700/60 text-gray-200 text-xs rounded-lg transition-all duration-200 border border-gray-400/30">
-                    <!-- Dodge option text inserted dynamically -->
+                        class="px-4 py-2 bg-gray-700/60 text-gray-200 text-xs rounded-lg border border-gray-400/30 transition-all">
                 </button>
             </div>
         </div>
 
-        <!-- OUR LOVE STORY & MINI QUIZ STEP -->
+        <!-- LOVE STORY STEP -->
         <div id="step-love-story" class="step-container hidden space-y-6 text-left">
             <div class="text-center">
                 <div class="inline-block p-4 bg-pink-500/30 rounded-full mb-2 animate-bounce">
                     <i class="fa-solid fa-heart-circle-check text-4xl text-rose-300"></i>
                 </div>
-                <h3 class="text-xl font-bold text-pink-200 border-b border-white/20 pb-2 text-center">আমাদের লাভ স্টোরি ও ছোট্ট কুইজ 🧠💖</h3>
+                <h3 class="text-xl font-bold text-pink-200 border-b border-white/20 pb-2 text-center">আমাদের লাভ স্টোরি ও কুইজ 🧠💖</h3>
             </div>
-
             <div class="bg-black/40 p-4 rounded-2xl border border-white/20 text-pink-100 text-sm leading-relaxed space-y-2">
                 <p class="font-bold text-rose-300">🌸 আমাদের মিষ্টি স্মৃতি:</p>
-                <p>আমাদের প্রথম কথা বলা থেকে শুরু করে আজকের এই মন খারাপের দিন পর্যন্ত— প্রতিটি মুহূর্ত আমার হৃদয়ে অমর হয়ে আছে। উন্মাদ সব ভুল শুধরে তোমার কাছেই ফিরতে চায়।</p>
+                <p>আমাদের প্রথম কথা বলা থেকে শুরু করে আজকের দিন পর্যন্ত প্রতিটি মুহূর্ত আমার হৃদয়ে অমর। উন্মাদ সব ভুল শুধরে তোমার কাছেই ফিরতে চায়।</p>
             </div>
-
             <div class="bg-white/10 p-4 rounded-2xl border border-white/20 space-y-3">
                 <p class="font-bold text-sm text-amber-200 text-center" id="story-quiz-question">প্রশ্ন: উন্মাদ সবচেয়ে বেশি কী ভালোবাসে?</p>
                 <div id="story-quiz-options" class="space-y-2">
@@ -364,7 +258,6 @@
                     <button onclick="answerStoryQuiz(false)" class="w-full py-2.5 px-3 bg-white/20 hover:bg-rose-500/50 rounded-xl text-xs font-semibold transition text-white">ফুচকা ও ঘুম 😴</button>
                 </div>
             </div>
-
             <div class="text-center pt-2">
                 <button id="nextToNoticeBtn" onclick="goToStep(98)" class="hidden w-full py-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-sm shadow-lg text-white">
                     পরবর্তী ধাপে চলো 🚀
@@ -372,7 +265,7 @@
             </div>
         </div>
 
-        <!-- PRE-ENDING NOTICE STEP -->
+        <!-- NOTICE STEP -->
         <div id="step-notice" class="step-container hidden space-y-6 text-left">
             <div class="text-center">
                 <div class="inline-block p-4 bg-amber-500/20 rounded-full mb-2 animate-pulse">
@@ -380,20 +273,17 @@
                 </div>
                 <h3 class="text-xl font-bold text-amber-200 border-b border-white/20 pb-2 text-center">একটি অসমাপ্ত স্বপ্ন... ✨</h3>
             </div>
-
-            <div class="bg-black/40 p-5 rounded-2xl border border-amber-300/30 text-pink-100 text-sm sm:text-base leading-relaxed italic shadow-inner">
-                "তুমি একদিন এসে বলবে, আমি এসেছি । সবসময়ের জন্য আপনার হয়ে এসেছি । চলেন আমার জন্য বাঁচেন,আমার জন্য কাজ করেন,আমার জন্য নিজেকে ঠিক করেন,দেখেন আমি এসেছি আপনার হয়ে আপনার সপ্ন আমি পূরন করেছি, আমার সপ্ন পূরণ করার দায়িত্ব আমি আপনার কাছে দিলাম । আপনি আমার সপ্ন পূরণ করেন ।- এই সপ্নটাই আমাকে ঘুমাতে দেয় না ।"
+            <div class="bg-black/40 p-5 rounded-2xl border border-amber-300/30 text-pink-100 text-sm leading-relaxed italic">
+                "তুমি একদিন এসে বলবে, আমি এসেছি । সবসময়ের জন্য আপনার হয়ে এসেছি । চলেন আমার জন্য বাঁচেন, আমার জন্য কাজ করেন, নিজের স্বপ্ন পূরণ করার দায়িত্ব আমি আপনার কাছে দিলাম ।"- এই স্বপ্নটাই আমাকে ঘুমাতে দেয় না।
             </div>
-
             <div class="text-center pt-3">
-                <button onclick="goToStep(99)" 
-                        class="pulse-btn w-full py-4 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg hover:from-pink-600 hover:to-rose-700 transition transform active:scale-95 text-white">
+                <button onclick="goToStep(99)" class="pulse-btn w-full py-4 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-lg shadow-lg text-white">
                     হ্যাঁ ফিরবো, চলো শেষ করি ❤
                 </button>
             </div>
         </div>
 
-        <!-- FINAL STEP: HEARTFELT LETTER, TYPEWRITER, CERTIFICATE & GIFT -->
+        <!-- FINAL STEP -->
         <div id="step-final" class="step-container hidden space-y-6 text-left">
             <div class="text-center">
                 <div class="inline-block p-4 bg-rose-500/30 rounded-full mb-2 animate-bounce">
@@ -401,86 +291,55 @@
                 </div>
                 <h2 class="text-2xl font-bold text-white border-b border-white/20 pb-3">প্রিয় নিহু... ❤</h2>
             </div>
-
-            <!-- Scrollable Letter with Typewriter Effect on Aesthetic Diary Paper -->
             <div class="diary-paper max-h-[350px] overflow-y-auto relative">
                 <div id="typewriterText" class="handwritten-text whitespace-pre-wrap"></div>
             </div>
-
-            <!-- Button: 10 Reasons Why I Love You -->
             <div class="text-center">
-                <button onclick="showLoveReason()" class="px-5 py-2.5 bg-pink-500/40 hover:bg-pink-500/60 border border-pink-300/40 rounded-full text-xs font-bold text-pink-100 transition shadow-md">
-                    💖 উন্মাদের আপনাকে ভালোবাসার ১০টি কারণ (ক্লিক করুন)
+                <button onclick="showLoveReason()" class="px-5 py-2.5 bg-pink-500/40 hover:bg-pink-500/60 border border-pink-300/40 rounded-full text-xs font-bold text-pink-100 transition">
+                    💖 উন্মাদের আপনাকে ভালোবাসার ১০টি কারণ
                 </button>
             </div>
-
-            <!-- DIGITAL LOVE CERTIFICATE SECTION -->
-            <div id="certificateCard" class="certificate-border rounded-2xl p-4 sm:p-6 text-gray-800 text-center shadow-2xl relative space-y-3">
+            <div class="certificate-border rounded-2xl p-4 sm:p-6 text-gray-800 text-center shadow-2xl relative space-y-3">
                 <div class="flex justify-between items-center text-xs text-amber-700 font-semibold">
-                    <span>SEAL OF ETERNAL LOVE</span>
-                    <span>No. #NIHU-UMMAD-Infinity</span>
+                    <span>SEAL OF ETERNAL LOVE</span><span>No. #NIHU-UMMAD</span>
                 </div>
-                <h3 class="text-xl font-extrabold text-rose-600 uppercase tracking-wider font-serif">ভালোবাসা ও ক্ষমার সনদপত্র 📜</h3>
-                <p class="text-xs text-gray-600">বিশ্বের সেরা ও মিষ্টি মহারানী</p>
-                <p class="text-2xl font-bold text-pink-600 underline decoration-rose-400">নিহু (NiHu)</p>
-                <p class="text-xs leading-relaxed text-gray-700">
-                    - কে এই সনদ প্রদান করা হলো। তিনি উন্মাদের সব ভুল ক্ষমা করে দিয়ে আরেকটু অপেক্ষা করিয়ে আবারও তার হৃদয়ের রাজ্যে ফিরে আসার মিষ্টি অঙ্গীকার গ্রহণ করেছেন। ❤️
-                </p>
+                <h3 class="text-xl font-extrabold text-rose-600 uppercase font-serif">ভালোবাসা ও ক্ষমার সনদপত্র 📜</h3>
+                <p class="text-xs text-gray-600">বিশ্বের সেরা মহারানী</p>
+                <p class="text-2xl font-bold text-pink-600 underline">নিহু (NiHu)</p>
+                <p class="text-xs leading-relaxed text-gray-700">তিনি উন্মাদের সব ভুল ক্ষমা করে দিয়ে আবারও তার হৃদয়ের রাজ্যে ফিরে আসার মিষ্টি অঙ্গীকার গ্রহণ করেছেন। ❤️</p>
                 <div class="flex justify-between items-end pt-3 border-t border-amber-300 text-xs">
-                    <div class="text-left">
-                        <p class="font-bold text-gray-700">তারিখ:</p>
-                        <p class="text-rose-500 font-semibold" id="certDate">সারাজীবনের জন্য</p>
-                    </div>
-                    <div class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] shadow-md border-2 border-amber-300">
-                        OFFICIAL LOVE
-                    </div>
-                    <div class="text-right">
-                        <p class="font-bold text-gray-700">প্রদানকারী:</p>
-                        <p class="font-bold text-rose-600 italic">ইতি, তোমার উন্মাদ ❤️</p>
-                    </div>
+                    <div class="text-left"><p class="font-bold text-gray-700">তারিখ:</p><p class="text-rose-500 font-semibold" id="certDate">সারাজীবনের জন্য</p></div>
+                    <div class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold text-[10px] border-2 border-amber-300">LOVE</div>
+                    <div class="text-right"><p class="font-bold text-gray-700">প্রদানকারী:</p><p class="font-bold text-rose-600 italic">তোমার উন্মাদ ❤️</p></div>
                 </div>
             </div>
-
-            <!-- VIRTUAL GIFT BOX SECTION -->
             <div class="text-center pt-2">
-                <div id="giftBoxContainer" onclick="openGiftBox()" class="cursor-pointer bg-gradient-to-r from-amber-400 to-rose-500 p-4 rounded-2xl border border-white/30 text-white shadow-xl hover:scale-105 transition transform">
+                <div onclick="openGiftBox()" class="cursor-pointer bg-gradient-to-r from-amber-400 to-rose-500 p-4 rounded-2xl border border-white/30 text-white shadow-xl hover:scale-105 transition transform">
                     <div id="giftIcon" class="text-4xl animate-bounce">🎁</div>
                     <p id="giftText" class="text-sm font-bold mt-1">আপনার বিশেষ গিফট বক্স! খুলতে ট্যাপ করুন ✨</p>
                 </div>
             </div>
-
-            <div class="text-center pt-2 space-y-2">
-                <button onclick="playChimes(); triggerConfetti();" 
-                        class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-600 rounded-xl font-bold text-sm shadow-lg text-white">
-                    <i class="fa-solid fa-sparkles text-amber-300 mr-1"></i> ভালোবাসার আরও মিষ্টি বৃষ্টি পাঠাও 💖
-                </button>
-            </div>
         </div>
 
     </div>
 
-    <!-- MODAL POPUPS -->
-    <!-- Short Letter Modal -->
+    <!-- Modal -->
     <div id="shortLetterModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card max-w-sm w-full p-6 rounded-3xl text-center space-y-4">
             <div class="text-4xl">💌</div>
             <h3 class="text-xl font-bold text-pink-200">উন্মাদের ছোট চিঠি</h3>
-            <p class="text-sm text-pink-100 leading-relaxed italic">
-                "নিহু... জানি আমি পাগলামি করি, ভুল করি। কিন্তু তোমাকে ছাড়া আমার এই পৃথিবীর সব অন্ধকার। একটু হেসে এই ওয়েবসাইটটা শেষ পর্যন্ত দেখো প্লিজ!"
-            </p>
+            <p class="text-sm text-pink-100 italic">"নিহু... জানি আমি পাগলামি করি। কিন্তু তোমাকে ছাড়া আমার এই পৃথিবীর সব অন্ধকার। একটু হেসে ওয়েবসাইটটা শেষ পর্যন্ত দেখো প্লিজ!"</p>
             <button onclick="closeShortLetterModal()" class="px-6 py-2 bg-rose-500 rounded-full font-bold text-xs text-white">বন্ধ করুন ❤️</button>
         </div>
     </div>
 
-    <!-- AUDIO & INTERACTIVE LOGIC -->
+    <!-- SCRIPT -->
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         function playTone(freq, duration, type = 'sine', vol = 0.05) {
             try {
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
+                if (audioCtx.state === 'suspended') { audioCtx.resume(); }
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = type;
@@ -491,9 +350,7 @@
                 gain.connect(audioCtx.destination);
                 osc.start();
                 osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {
-                console.log("Audio play error:", e);
-            }
+            } catch(e) { console.log(e); }
         }
 
         function playSuccessSound() {
@@ -510,11 +367,9 @@
 
         const bgAudio = document.getElementById('bgMusic');
         let isMusicPlaying = false;
-
         function toggleMusic() {
             const btnText = document.getElementById('musicText');
             const icon = document.getElementById('musicIcon');
-
             if (isMusicPlaying) {
                 bgAudio.pause();
                 isMusicPlaying = false;
@@ -525,10 +380,7 @@
                     isMusicPlaying = true;
                     btnText.innerText = "সুর বাজছে... 🎶";
                     icon.classList.add('fa-spin');
-                }).catch(e => {
-                    console.log("Audio play blocked:", e);
-                    alert("ব্রাউজার অডিও ব্লক করেছে। স্ক্রিনে যেকোনো জায়গায় ক্লিক করে আবার ট্রাই করুন ❤️");
-                });
+                }).catch(e => alert("স্ক্রিনে যেকোনো জায়গায় ক্লিক করে আবার অডিও অন করুন ❤️"));
             }
         }
 
@@ -578,8 +430,7 @@
                 playChimes();
                 triggerConfetti();
                 startTypewriter();
-                const today = new Date();
-                document.getElementById('certDate').innerText = today.toLocaleDateString('bn-BD');
+                document.getElementById('certDate').innerText = new Date().toLocaleDateString('bn-BD');
             }
         }
 
@@ -596,7 +447,7 @@
                 goToStep(2);
             } else {
                 playTone(180, 0.3, 'sawtooth', 0.1);
-                errorDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> ভুল পাসওয়ার্ড! নিচেই তো দেওয়া আছে নিহু ম্যাডাম 😜`;
+                errorDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> ভুল পাসওয়ার্ড! আইডি: NiHu আর পাসওয়ার্ড: Ummad দিন 😜`;
                 errorDiv.classList.remove('hidden');
             }
         }
@@ -606,84 +457,34 @@
             if (mood === 'angry') {
                 alert("🚨 উন্মাদকে কান ধরে ২০ বার উঠবস করার সাজা দেওয়া হলো এবং নিহু ম্যাডামকে ১ বক্সে ফুচকা খাওয়ানোর আদেশ জারি করা হলো! 😜");
             } else if (mood === 'slightly') {
-                alert("😤 উন্মাদ খুব জলদি আপনাকে জড়িয়ে ধরে ও মাথায় হাত বুলিয়ে সব রাগ দূর করে দিতে চায়!");
+                alert("😤 উন্মাদ খুব জলদি আপনাকে জড়িয়ে ধরে সব রাগ দূর করে দিতে চায়!");
             } else {
-                alert("🥺 ভালোবাসা নিহু! চলো বাকি ছোট্ট সারপ্রাইজ দেখে নাও!");
+                alert("🥺 ভালোবাসা নিহু! চলো বাকি সারপ্রাইজ দেখে নাও!");
             }
             goToStep(4);
         }
 
         const questions = [
-            {
-                q: "১. তুমি কি আমাকে ভালোবাসো ?",
-                o1: "হ্যাঁ অবশ্যই",
-                o2: "আবার জিগায়",
-                dodgeText: "না, ভালোবাসবো না 😤",
-                dodge: true
-            },
-            {
-                q: "২. তুমি কি আমাকে মিস করো ? কাছে পেতে চাও ? জরিয়ে ধরে কাদবে ? বলবে যা কাউকে বলতে পারছো না । আমাকে তোমার সব থেকে আপন বন্ধু বানাবে ?",
-                o1: "হু উম্মাদ আমার",
-                o2: "হ্যাঁ পাগলা আমার",
-                dodgeText: "জিব্বনেও নাহ 😤",
-                dodge: true
-            },
-            {
-                q: "৩. ঘুরতে যেতে চাও কোথায় ?",
-                o1: "তোমার বুকে",
-                o2: "তোমার মনে",
-                dodgeText: "জাহান্নামে,জাবেন ? 😈",
-                dodge: true
-            },
-            {
-                q: "৪. ভুল কে বেশি করে আর পরে ক্ষমা চেয়ে পটায় কে?",
-                o1: "আমার সেই উন্মান্দ ছেলেটা 🤦‍♂️",
-                o2: "তুমি ছাড়া আর কে! 💕",
-                dodgeText: "আমিও ক্ষমা চেয়ে পটাই 🤔",
-                dodge: true
-            },
-            {
-                q: "৫. আমাদের পুরনো দিনগুলি কি তোমার মনে পরে ?",
-                o1: "হ্যাঁ অনেক, আমি ঐ দিনগুলি ভুলতে পারবো না ।",
-                o2: "ঐ সুন্দর দিনগুলো সব মনে আছে 💕",
-                dodgeText: "কি যেন ? কবে ? কখন ? কি ? 🙄",
-                dodge: true
-            },
-            {
-                q: "৬. আচ্ছাহ, বলে ফেলো আমরা বাচ্চা কয়টা নিবো ?",
-                o1: "আপনি নিজেই তো বাচ্চা আবার বাচ্চা নিয়ে কি করবো ?😂",
-                o2: "২০ টা 🙈",
-                dodgeText: "একটাও নাহ,আইছে ফাজিল ব্যাডা 😒",
-                dodge: true
-            },
-            {
-                q: "৭. আমাদের এই দূরত্ব আর কতদিন ? দূরত্ব শেষ করে ফিরবে তো ?",
-                o1: "হুম... আরেকটু সবর⏱",
-                o2: "ফিরবো আমি,আমি আপনারই । আরেকটু অপেক্ষা করেন",
-                dodgeText: "আপনি আমারে মারেন খালি,ফিরমু নাহ 🙈",
-                dodge: true
-            }
+            { q: "১. তুমি কি আমাকে ভালোবাসো ?", o1: "হ্যাঁ অবশ্যই", o2: "আবার জিগায়", dodgeText: "না, ভালোবাসবো না 😤", dodge: true },
+            { q: "২. তুমি কি আমাকে মিস করো ? কাছে পেতে চাও ?", o1: "হু উম্মাদ আমার", o2: "হ্যাঁ পাগলা আমার", dodgeText: "জিব্বনেও নাহ 😤", dodge: true },
+            { q: "৩. ঘুরতে যেতে চাও কোথায় ?", o1: "তোমার বুকে", o2: "তোমার মনে", dodgeText: "জাহান্নামে,জাবেন ? 😈", dodge: true },
+            { q: "৪. ভুল কে বেশি করে আর পরে ক্ষমা চেয়ে পটায় কে?", o1: "আমার সেই উন্মান্দ ছেলেটা 🤦‍♂️", o2: "তুমি ছাড়া আর কে! 💕", dodgeText: "আমিও ক্ষমা চেয়ে পটাই 🤔", dodge: true },
+            { q: "৫. আমাদের পুরনো দিনগুলি কি তোমার মনে পরে ?", o1: "হ্যাঁ অনেক, ভুলতে পারবো না ।", o2: "ঐ সুন্দর দিনগুলো সব মনে আছে 💕", dodgeText: "কি যেন ? কবে ? কখন ? 🙄", dodge: true },
+            { q: "৬. আচ্ছাহ, বলে ফেলো আমরা বাচ্চা কয়টা নিবো ?", o1: "আপনি নিজেই তো বাচ্চা! 😂", o2: "২০ টা 🙈", dodgeText: "একটাও নাহ 😒", dodge: true },
+            { q: "৭. আমাদের এই দূরত্ব শেষ করে ফিরবে তো ?", o1: "হুম... আরেকটু সবর⏱", o2: "ফিরবো আমি, আপনারই ।", dodgeText: "ফিরমু নাহ 🙈", dodge: true }
         ];
 
         let currentQIndex = 0;
-
         function loadQuestion(index) {
             currentQIndex = index;
             const q = questions[index];
-            
             document.getElementById('question-number').innerText = `ধাপ ${index + 1} / ${questions.length}`;
             document.getElementById('question-text').innerText = q.q;
 
             const optsContainer = document.getElementById('options-container');
             optsContainer.innerHTML = `
-                <button onclick="answerQuestion()" 
-                        class="w-full py-3.5 px-4 bg-white/20 hover:bg-rose-500/50 border border-white/40 rounded-2xl font-semibold text-sm sm:text-base transition duration-300 transform active:scale-95 text-white shadow-md">
-                    ${q.o1}
-                </button>
-                <button onclick="answerQuestion()" 
-                        class="w-full py-3.5 px-4 bg-white/20 hover:bg-rose-500/50 border border-white/40 rounded-2xl font-semibold text-sm sm:text-base transition duration-300 transform active:scale-95 text-white shadow-md">
-                    ${q.o2}
-                </button>
+                <button onclick="answerQuestion()" class="w-full py-3.5 px-4 bg-white/20 hover:bg-rose-500/50 border border-white/40 rounded-2xl font-semibold text-sm transition text-white shadow-md">${q.o1}</button>
+                <button onclick="answerQuestion()" class="w-full py-3.5 px-4 bg-white/20 hover:bg-rose-500/50 border border-white/40 rounded-2xl font-semibold text-sm transition text-white shadow-md">${q.o2}</button>
             `;
 
             const dodgeBox = document.getElementById('dodging-btn-container');
@@ -709,60 +510,85 @@
 
         function dodgeButton() {
             const btn = document.getElementById('dodgeBtn');
-            const randomX = (Math.random() - 0.5) * 220;
-            const randomY = (Math.random() - 0.5) * 120;
-            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            btn.style.transform = `translate(${(Math.random() - 0.5) * 200}px, ${(Math.random() - 0.5) * 100}px)`;
             playTone(600, 0.05, 'square', 0.05);
         }
 
         function triggerConfetti() {
             if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 50,
-                    spread: 60,
-                    origin: { y: 0.7 }
-                });
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
             }
         }
 
-        const funnyReactions = [
-            "উফ! জানি তো এটাই বলবে! 😜",
-            "হাহা! ধরা খেয়ে গেলে তো! 💖",
-            "এত ভালোবাসা কোথায় রাখি! 🙈",
-            "মিথ্যা উত্তর হলেও শুনতে দারুণ লাগছে! 😘",
-            "ইসস! আমার কিউট নিহুটা! 🌸",
-            "একদম ঠিক কথা! ❤"
-        ];
-
         function showCuteToast() {
             const toast = document.createElement('div');
-            const randomMsg = funnyReactions[Math.floor(Math.random() * funnyReactions.length)];
-            toast.className = 'fixed top-12 left-1/2 transform -translate-x-1/2 bg-rose-600 text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-2xl z-50 animate-bounce border border-rose-300';
-            toast.innerHTML = `<i class="fa-solid fa-heart mr-1 text-pink-200"></i> ${randomMsg}`;
+            toast.className = 'fixed top-12 left-1/2 transform -translate-x-1/2 bg-rose-600 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-2xl z-50 animate-bounce border border-rose-300';
+            toast.innerHTML = `<i class="fa-solid fa-heart mr-1"></i> দারুণ উত্তর! 💖`;
             document.body.appendChild(toast);
-
-            setTimeout(() => { toast.remove(); }, 1600);
+            setTimeout(() => toast.remove(), 1500);
         }
 
-        const fullLetterText = `ধন্যবাদ নিহু ❤ ধন্যবাদ মনের বিরুদ্ধে মিথ্যা উত্তর দিয়ে দিয়ে এতদূর আসার জন্য । 
+        const fullLetterText = `ধন্যবাদ নিহু ❤ ধন্যবাদ মনের বিরুদ্ধে মিথ্যা উত্তর দিয়ে দিয়ে এতদূর আসার জন্য। 
 
-ভালোবাসি ❤ আমি জানি তুমি আমার ভুলের জন্য এখন আমার থেকে দূরে থাকো । আমাকে একদিন ক্ষমা করে দিয়ো ? যতই দেরি হোক ফিরে এসো তোমার ঘরে । আমি অপেক্ষা করবো...
+ভালোবাসি ❤ আমি জানি তুমি আমার ভুলের জন্য এখন আমার থেকে দূরে থাকো। আমাকে একদিন ক্ষমা করে দিয়ো? যতই দেরি হোক ফিরে এসো তোমার ঘরে। আমি অপেক্ষা করবো...
 
-তুমি বলেছিলে আমাদের এই পথে এমন সময় আসবে যখন মনে হবে সব শেষ,তখনও আপনার অপেক্ষা করতে হবে । আমি সব সামলিয়ে আপনার কাছে ফিরবো ।
+তুমি বলেছিলে আমাদের এই পথে এমন সময় আসবে যখন মনে হবে সব শেষ, তবুও আপনার অপেক্ষা করতে হবে। আমি সব সামলিয়ে আপনার কাছে ফিরবো।
 
-আমি সেই ফেরার অপেক্ষায় । সেদিন আমার থেকে খুসি এই পৃথিবীর কেউ হবে না । আমার দুনিয়াবি চাওয়ার অবসান হবে সেইদিন । আমি অপেক্ষমান...
-
-ভালোবাসি আমার পাখি,আমার পৃথিবী,আমার মহারানী,আমার শেষ নারী শেষ চাওয়া,আমার একান্তমানবী, আমার নিহু❤🌸`;
+ভালোবাসি আমার পাখি, আমার পৃথিবী, আমার মহারানী, আমার শেষ নারী, শেষ চাওয়া, আমার একান্তমানবী, নিহু ❤🌸`;
 
         let typeIdx = 0;
         function startTypewriter() {
             const target = document.getElementById('typewriterText');
             target.innerHTML = "";
             typeIdx = 0;
-            
             function typeNextChar() {
                 if (typeIdx < fullLetterText.length) {
                     const char = fullLetterText.charAt(typeIdx);
-                    if (char === '\n') {
-                        target.innerHTML += '<br>';
-                    } else if (char === '
+                    target.innerHTML += (char === '\n') ? '<br>' : (char === ' ') ? '&nbsp;' : char;
+                    typeIdx++;
+                    target.parentElement.scrollTop = target.parentElement.scrollHeight;
+                    setTimeout(typeNextChar, 40);
+                }
+            }
+            typeNextChar();
+        }
+
+        const loveReasons = [
+            "১. তোমার ওই রাগি কিন্তু কিউট মুখটার জন্য! 🌸",
+            "২. তুমি আমাকে পৃথিবীর সবচেয়ে বিশেষ মানুষ অনুভব করাও। ❤️",
+            "৩. তোমার হাসি দেখলে আমার সব দুঃখ দূর হয়ে যায়। 😊",
+            "৪. তুমি আমার জীবনের সবচেয়ে বড় উপহার। ✨",
+            "৫. তোমার মতো যত্ন আর কেউ নিতে পারে না। 🫂",
+            "৬. তুমি আমার সেরা বন্ধু ও একমাত্র রাজরানী। 👑",
+            "৭. তোমার কথা শুনলে মন ভালো হয়ে যায়। 🎶",
+            "৮. তোমার সাথে কাটানো প্রতিটা মুহূর্ত স্মরণীয়। ⏳",
+            "৯. তুমি আমার শেষ চাওয়া এবং শেষ নারী। 💕",
+            "১০. কারণ আমি তো তোমাকেই ভালোবাসি, উন্মাদের নিহু! ❤️"
+        ];
+        let reasonIdx = 0;
+        function showLoveReason() {
+            playTone(600, 0.1);
+            alert(loveReasons[reasonIdx]);
+            reasonIdx = (reasonIdx + 1) % loveReasons.length;
+        }
+
+        function answerStoryQuiz(isCorrect) {
+            playSuccessSound();
+            triggerConfetti();
+            const qEl = document.getElementById('story-quiz-question');
+            const optEl = document.getElementById('story-quiz-options');
+            const nextBtn = document.getElementById('nextToNoticeBtn');
+            qEl.innerText = isCorrect ? "🎉 একদম সঠিক উত্তর! আমার মহারানী নিহুই আমার সব!" : "🥰 ফুচকা আর ঘুম তো পছন্দ, তবে সবার উপরে শুধু নিহুই! ❤️";
+            optEl.innerHTML = "<p class='text-xs text-pink-200 font-bold'>চলো এবার উন্মাদের শেষ সুন্দর কথাটি দেখে নেওয়া যাক...</p>";
+            nextBtn.classList.remove('hidden');
+        }
+
+        function openGiftBox() {
+            playChimes();
+            triggerConfetti();
+            document.getElementById('giftIcon').innerText = "🎟️";
+            document.getElementById('giftText').innerHTML = "<span class='text-amber-200 text-base'>গিফট কুপন আনলকড:</span><br>১টি শক্ত করে জড়িয়ে ধরা + সারাজীবন পাশে থাকার গ্যারান্টি! ❤️";
+        }
+    </script>
+</body>
+</html>
