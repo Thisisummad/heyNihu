@@ -125,7 +125,6 @@
             <h1 class="text-3xl font-bold">সিক্রেট লাভ লগইন</h1>
             <p class="text-sm text-pink-100">আপনার ব্যক্তিগত উন্মাদের রাজ্যে প্রবেশ করতে আইডি ও পাসওয়ার্ড দিন 🌸</p>
 
-            <!-- preventDefault যুক্ত করা ফর্ম -->
             <form id="loginForm" onsubmit="event.preventDefault(); handleLogin();" class="space-y-4 text-left">
                 <div>
                     <label class="block text-xs font-semibold mb-1 ml-1 text-pink-100">User Name:</label>
@@ -152,12 +151,10 @@
             </div>
         </div>
 
-        <!-- STEP 2: WELCOME & PHOTO -->
+        <!-- STEP 2: WELCOME (PHOTO REMOVED) -->
         <div id="step-2" class="step-container hidden space-y-6">
-            <div class="flex justify-center mb-2">
-                <div class="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-pink-400 via-rose-500 to-amber-300 shadow-xl animate-pulse">
-                    <img src="nihu_photo.jpg" alt="NiHu" class="w-full h-full object-cover rounded-full border-4 border-white/80" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300'">
-                </div>
+            <div class="inline-block p-4 bg-rose-500/30 rounded-full animate-bounce mb-2">
+                <i class="fa-solid fa-crown text-5xl text-amber-300"></i>
             </div>
             <h2 class="text-2xl font-bold leading-relaxed text-pink-100">
                 "হ্যালো প্রিয় মানুষ, প্রিয় বন্ধু আমার । চলো তোমার উন্মাদের সাথে একটু অন্য জগতে ।"
